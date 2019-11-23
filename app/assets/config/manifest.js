@@ -47,4 +47,4 @@
 //= link flags/4x3/us.svg
 //
 //= link application.css
-
+//= link application.js

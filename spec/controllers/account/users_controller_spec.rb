@@ -4,7 +4,7 @@ RSpec.describe Account::UsersController, type: :controller do
   render_views
 
   let!(:user) { create(:user) }
-  let!(:user_valid_params) { { first_name: "John" } }
+  let!(:user_valid_params) { { first_name: "John", last_name: "Doe", email: 'foo@gmail.com', password: 'foobar' } }
   let!(:user_invalid_params) { { first_name: "" } }
 
   before do
@@ -15,6 +15,31 @@ RSpec.describe Account::UsersController, type: :controller do
     it 'renders index template' do
       get :index
       expect(response).to be_successful
+    end
+  end
+
+  describe 'GET #new' do
+    it "returns a 200 status code" do
+      get :new
+      expect(response).to be_successful
+    end
+  end
+
+  describe 'POST create' do
+    context 'with valid attributes' do
+      it 'should create a new user' do
+        expect do
+          post :create, params: { user: user_valid_params}
+        end.to change(User, :count).by(1)
+      end
+    end
+
+    context 'with invalid attributes' do
+      it 'should not create a new contact' do
+        expect do
+          post :create, params: { user: user_invalid_params }
+        end.to_not change(User, :count)
+      end
     end
   end
 
@@ -49,5 +74,4 @@ RSpec.describe Account::UsersController, type: :controller do
       expect(response).to redirect_to account_users_path
     end
   end
-
 end

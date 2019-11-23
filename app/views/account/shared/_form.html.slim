@@ -3,16 +3,14 @@
   = f.error_messages
   = f.input :first_name, input_html: { class: 'form-control' }
   = f.input :last_name, input_html: { class: 'form-control' }
-  = f.input :email, input_html: { class: 'form-control' }
-  = f.input :password, input_html: { class: 'form-control' }
+  = f.input :email, required: true, input_html: { class: 'form-control' }
+  = f.input :password, required: true, input_html: { class: 'form-control' }
   - roles = ['admin', 'manager']
   - if current_user.super_admin?
     - roles << 'super_admin'
     - if action == :new
       = f.association :organization, include_blank: false, include_hidden: false, input_html: { class: 'form-control' }
-  = f.input :role, as: :select, collection: roles, include_blank: false, include_hidden: false, input_html: { class: 'form-control' }
+  = f.input :role, as: :select, priority: roles[0], collection: roles, include_blank: false, include_hidden: false, input_html: { class: 'form-control' }
   - button_text = action == :new ? 'Create' : 'Update'
   = f.button :submit, "#{button_text} User", class: "btn btn-primary mt-1"
   = link_to 'Back', account_users_path, class: "btn mt-1"
-
-
