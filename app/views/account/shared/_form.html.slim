@@ -1,16 +1,16 @@
 - path = action == :new ? account_users_path(user) : account_user_path(user)
-= simple_form_for user, url: path, html: {class: 'form'} do |f|
+= simple_form_for user, url: path do |f|
   = f.error_messages
-  = f.input :first_name, input_html: { class: 'form-control' }
-  = f.input :last_name, input_html: { class: 'form-control' }
-  = f.input :email, required: true, input_html: { class: 'form-control' }
-  = f.input :password, required: true, input_html: { class: 'form-control' }
+  = f.input :first_name
+  = f.input :last_name
+  = f.input :email, required: true
+  = f.input :password, required: true
   - roles = ['admin', 'manager']
   - if current_user.super_admin?
     - roles << 'super_admin'
     - if action == :new
-      = f.association :organization, include_blank: false, include_hidden: false, input_html: { class: 'form-control' }
-  = f.input :role, as: :select, priority: roles[0], collection: roles, include_blank: false, include_hidden: false, input_html: { class: 'form-control' }
+      = f.association :organization, include_blank: false, include_hidden: false
+  = f.input :role, as: :select, priority: roles[0], collection: roles, include_blank: false, include_hidden: false
   - button_text = action == :new ? 'Create' : 'Update'
-  = f.button :submit, "#{button_text} User", class: "btn btn-primary mt-1"
+  = f.button :submit, "#{button_text} User", class: "btn-primary mt-1"
   = link_to 'Back', account_users_path, class: "btn mt-1"

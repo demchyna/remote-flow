@@ -7,54 +7,59 @@ RSpec.describe Account::UsersController, type: :controller do
   let!(:user_valid_params) { { first_name: "John", last_name: "Doe", email: 'foo@gmail.com', password: 'foobar' } }
   let!(:user_invalid_params) { { first_name: "" } }
 
-  before do
-    sign_in user
-  end
 
-  describe 'GET #index' do
-    it 'renders index template' do
-      get :index
-      expect(response).to be_successful
+  context 'when logged in' do
+    before do
+      sign_in user
     end
-  end
 
-  describe 'GET #new' do
-    it "returns a 200 status code" do
-      get :new
-      expect(response).to be_successful
-    end
-  end
-
-  describe 'POST create' do
-    context 'with valid attributes' do
-      it 'should create a new user' do
-        expect do
-          post :create, params: { user: user_valid_params}
-        end.to change(User, :count).by(1)
+    describe 'GET #index' do
+      it 'renders index template' do
+        get :index
+        expect(response).to be_successful
       end
     end
 
-    context 'with invalid attributes' do
-      it 'should not create a new contact' do
-        expect do
-          post :create, params: { user: user_invalid_params }
-        end.to_not change(User, :count)
+    describe 'GET #new' do
+      it "returns a 200 status code" do
+        get :new
+        expect(response).to be_successful
       end
     end
-  end
 
-  context 'GET /account/users/:id' do
-    it 'should show user page' do
-      get :show, params: { id: user.id }
-      expect(response).to be_successful
+    describe 'POST #create' do
+      context 'with valid attributes' do
+        it 'should create a new user' do
+          expect do
+            post :create, params: { user: user_valid_params}
+          end.to change(User, :count).by(1)
+        end
+      end
+
+      context 'with invalid attributes' do
+        it 'should not create a new contact' do
+          expect do
+            post :create, params: { user: user_invalid_params }
+          end.to_not change(User, :count)
+        end
+      end
     end
 
-    it 'must display edit page' do
-      get :edit, params: { id: user.id }
-      expect(response).to render_template(:edit)
+    describe 'GET #show' do
+      it 'should show user page' do
+        get :show, params: { id: user.id }
+        expect(response).to be_successful
+      end
     end
 
-    context 'update the user' do
+    describe 'GET #edit' do
+      it 'must display edit page' do
+        get :edit, params: { id: user.id }
+        expect(response).to render_template(:edit)
+      end
+    end
+
+    describe 'PATCH #update' do
       it 'with valid attributes' do
         patch :update, params: { id: user.id, user: user_valid_params }
         user.reload
@@ -69,9 +74,12 @@ RSpec.describe Account::UsersController, type: :controller do
       end
     end
 
-    it 'should delete user' do
-      expect{ (delete :destroy, params: { id: user.id }) }.to change{ User.count }.by(-1)
-      expect(response).to redirect_to account_users_path
+    describe 'DELETE #destroy' do
+      it 'should delete user' do
+        expect{ (delete :destroy, params: { id: user.id }) }.to change{ User.count }.by(-1)
+        expect(response).to redirect_to account_users_path
+      end
     end
+
   end
 end
