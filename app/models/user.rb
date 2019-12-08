@@ -4,7 +4,7 @@ class User < ApplicationRecord
   MANAGER = 'manager'.freeze
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :invitable
 
   mount_uploader :avatar, AvatarUploader
 

@@ -1,0 +1,21 @@
+section
+  .card
+    .card-header
+      h4.card-title
+        = t "devise.invitations.edit.header"
+    .card-content
+      .card-body
+        = simple_form_for(resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put }) do |f|
+          = f.error_messages
+          = f.hidden_field :invitation_token
+          = f.hidden_field :organization_id
+
+          .form-inputs
+            = f.input :first_name
+            = f.input :last_name
+            = f.input :role
+            = f.input :password
+            = f.input :password_confirmation
+
+            = f.button :submit, t("devise.invitations.edit.submit_button")
+

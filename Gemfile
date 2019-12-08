@@ -22,9 +22,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'jquery-rails'
 gem 'slim-rails'
 gem 'devise'
+gem 'devise_invitable', '~> 2.0.0'
 gem 'dynamic_form'
-gem 'simple_form'
-gem 'any_login'
 gem 'kaminari'
 gem 'any_login'
 # Use Redis adapter to run Action Cable in production
@@ -60,7 +59,6 @@ group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
   gem 'selenium-webdriver'
-  gem 'rails-controller-testing'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'simplecov', require: false
