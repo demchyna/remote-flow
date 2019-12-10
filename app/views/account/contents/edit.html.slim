@@ -12,7 +12,8 @@
   = link_to "Delete",
       account_content_path(@content),
       class: "btn btn-sm btn-light-danger",
-      method: :delete
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
 
 section
   .card

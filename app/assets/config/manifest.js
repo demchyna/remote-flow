@@ -14,6 +14,7 @@
 //= link prism.min.js
 //= link vertical-menu-light.js
 //= link bootstrap.js
+//= link show_file_name_in_file_field.js
 //
 //= link authentication.css
 //= link bootstrap.css
@@ -30,8 +31,6 @@
 //= vendors.min.css
 //= link toastr.css
 
-
-//
 //= link boxicons.eot
 //= link boxicons.woff
 //= link boxicons.woff2
@@ -60,11 +59,8 @@
 //= link sketch-mac-icon.png
 //= link carousel.jpg
 
-
 //= link instagram_profile_image.png
 //= link logo-remote-flow.png
-
-
 //
 //= link flags/4x3/us.svg
 //

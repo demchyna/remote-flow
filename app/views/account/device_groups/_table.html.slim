@@ -1,0 +1,27 @@
+.table-responsive
+  table.table.zero-configuration
+    thead
+      tr
+        th ID
+        th Name
+        th Created
+        th Edit
+        th Delete
+    tbody
+      - device_groups.each do |group|
+        tr id="device_group_#{group.id}"
+          td
+            = group.id
+          td
+            = link_to group.name, account_device_group_path(group),
+                remote: true
+          td
+            = l(group.created_at, format: :long)
+          td
+            = link_to "Edit", edit_account_device_group_path(group),
+                remote: true
+          td
+            = link_to "Delete", account_device_group_path(group),
+                method: :delete, class: 'danger', remote: true,
+                data: { confirm: 'Are you sure?'}
+  = paginate device_groups, remote: true

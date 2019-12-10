@@ -7,7 +7,7 @@
   = link_to "Add New Channel",
           new_account_channel_path,
           class: "btn btn-sm btn-light-primary"
-        
+
 .card
   .card-header
     h4.card-title Channels
@@ -30,7 +30,7 @@
                 td
                   = link_to channel.name, account_channel_path(channel)
                 td
-                  = channel.created_at.strftime("%m/%d/%Y")
+                  = l(channel.created_at, format: :long)
                 td
                   = link_to "Edit", edit_account_channel_path(channel)
                 td

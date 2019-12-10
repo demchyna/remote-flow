@@ -11,7 +11,8 @@
       class: "btn btn-sm btn-light-primary mr-50"
   = link_to "Delete", account_user_path(@user),
       class: "btn btn-sm btn-light-danger",
-      method: :delete
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
 
 section
   .card

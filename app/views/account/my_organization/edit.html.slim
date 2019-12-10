@@ -1,0 +1,17 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'My Organization', \
+    url: account_my_organization_path },\
+  { title: 'Edit' }\
+]
+
+.card
+  .card-content
+    .card-header.pb-0
+      h4 Edit
+    .card-body
+      - path = account_my_organization_path
+      = render 'account/my_organization/form',
+          organization: @organization,
+          path: path,
+          back_path: path

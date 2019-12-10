@@ -31,7 +31,7 @@
                 td
                   = status_badge device.active
                 td
-                  = device.created_at.strftime("%m/%d/%Y")
+                  = l(device.created_at, format: :long)
                 td
                   = link_to "Edit", edit_account_device_path(device)
                 td

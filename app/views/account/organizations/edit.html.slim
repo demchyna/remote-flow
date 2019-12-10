@@ -1,19 +1,17 @@
 - breadcrumbs [\
   { home: true, url: account_path },\
-    \
   { title: 'Organizations', \
     url: account_organizations_path },\
-    \
   { title: 'Organization', \
     url: account_organization_path(@organization) },\
-    \
   { title: 'Edit' }\
 ]
 
 - content_for :actions do
   = link_to "Delete", account_organization_path(@organization),
       class: "btn btn-sm btn-light-danger",
-      method: :delete
+      method: :delete,
+      data: { confirm: 'Are you sure?' }
 
 .card
   .card-content

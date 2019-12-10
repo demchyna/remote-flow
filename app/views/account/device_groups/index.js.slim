@@ -1,0 +1,8 @@
+|
+  $('.table-responsive').fadeOut(300, function(e){
+    $(this).remove();
+    $('.card-body').fadeIn(300, function(){
+      $(this).append('#{j render('account/device_groups/table', device_groups: @device_groups)}');
+    });
+  });
+

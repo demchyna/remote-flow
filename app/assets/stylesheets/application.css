@@ -1,4 +1,5 @@
 /*
+ *= require common
  *= require_self
  *= require account/_form
  *= require account/organization_form
@@ -9,3 +10,4 @@
 
  *= require profile
 */
+

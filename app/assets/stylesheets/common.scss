@@ -1,0 +1,7 @@
+.is-valid {
+  border-color: #ccc !important;
+  background-image: inherit !important;
+  &:focus {
+    border-color: #aaa !important;
+  }
+}

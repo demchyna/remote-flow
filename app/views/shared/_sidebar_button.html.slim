@@ -1,4 +1,4 @@
-li id="#{options[:id]}" class='nav-item'
+li id="#{options[:id]}" class='nav-item #{options[:class]}'
   = link_to options[:path], method: options[:method] do
     i.menu-livicon data-icon="#{options[:icon]}"
     span.menu-title

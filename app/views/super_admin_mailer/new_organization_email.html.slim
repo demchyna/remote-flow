@@ -5,4 +5,4 @@ html
   body
     h1 New user Created
     p Organization: #{@organization.name}
-    p Create at: #{@organization.created_at.strftime("%m/%d/%Y %H:%M")}
+    p Create at: #{ l(@organization.created_at, format: :long) }

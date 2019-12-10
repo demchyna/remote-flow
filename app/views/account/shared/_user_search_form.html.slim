@@ -9,16 +9,25 @@
     .col-md-2.col-12
       = f.label :email_cont, "Email"
       = f.search_field :email_cont, placeholder: 'Email', class: 'form-control'
+    - roles = [User::ADMIN, User::MANAGER]
     - if current_user.super_admin?
+      - roles << User::SUPER_ADMIN
       .col-md-2.col-12
         = f.label :role_eq, "Role"
-        = f.select(:role_eq, options_for_select(['admin', 'manager']), { include_blank: true }, {class: 'form-control'})
+        = f.select(:role_eq, options_for_select(roles,
+            selected: params.dig(:q,:role_eq)),
+            { include_blank: true }, {class: 'form-control'})
     - else
       .col-md-4.col-12
         = f.label :role_eq, "Role"
-        = f.select(:role_eq, options_for_select(['admin', 'manager']), { include_blank: true }, {class: 'form-control'})
+        = f.select(:role_eq, options_for_select(roles,
+            selected: params.dig(:q,:role_eq)),
+            { include_blank: true }, {class: 'form-control'})
     - if current_user.super_admin?
       .col-md-2.col-12
         = f.label :organization_id_eq, "Organization"
-        = f.select(:organization_id_eq, options_from_collection_for_select(Organization.all, "id", "name"), { include_blank: true }, {class: 'form-control'})
+        = f.select(:organization_id_eq,
+            options_from_collection_for_select(Organization.all, "id", "name",
+            selected: params.dig(:q,:organization_id_eq)),
+            { include_blank: true }, {class: 'form-control'})
     = f.submit class: "btn btn-primary mt-2 ml-5 mr-sm-50"

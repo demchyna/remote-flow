@@ -12,9 +12,16 @@ class ApplicationController < ActionController::Base
   end
 
   def require_super_admin_only!
-    unless current_user.super_admin?
-      flash[:warning] = "You are not allowed to do such things!"
-      redirect_to controller: 'dashboard', action: 'index'
-    end
+    return if current_user.super_admin?
+
+    flash[:warning] = 'You don\'t have permission to perform such action!'
+    redirect_to controller: 'dashboard', action: 'index'
+  end
+
+  def require_admin_only!
+    return if current_user.admin?
+
+    flash[:warning] = 'You don\'t have permission to perform such action!'
+    redirect_to controller: 'dashboard', action: 'index'
   end
 end

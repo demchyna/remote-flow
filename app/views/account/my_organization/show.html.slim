@@ -1,19 +1,12 @@
 - breadcrumbs [\
   { home: true, \
     url: account_path },\
-  { title: 'Organizations', \
-    url: account_organizations_path },\
-  { title: 'Organization' }\
+  { title: 'My Organization', \
+    url: account_my_organization_path },\
 ]
 - content_for :actions do
-  = link_to "All Organizations", account_organizations_path(@organization), \
+  = link_to "Edit", edit_account_my_organization_path, \
             class: "btn btn-sm btn-light-primary mr-50"
-  = link_to "Edit", edit_account_organization_path(@organization), \
-            class: "btn btn-sm btn-light-primary mr-50"
-  = link_to "Delete", account_organization_path(@organization), \
-            class: "btn btn-sm btn-light-danger", \
-            method: :delete,
-            data: { confirm: 'Are you sure?' }
 
 .card
   .card-content
@@ -25,6 +18,7 @@
           table.table.table-borderless
             tbody
               tr
+                td Logo
                 td.organization-logo
                   = image_tag @organization.logo.url, class: 'logo-img'
               tr

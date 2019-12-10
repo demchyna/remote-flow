@@ -41,7 +41,7 @@ section
                   td
                     = content.type
                   td
-                    = content.created_at.strftime("%m/%d/%Y")
+                    = l(content.created_at, format: :long)
                   td
                     = link_to 'Edit',
                       edit_account_content_path(content)

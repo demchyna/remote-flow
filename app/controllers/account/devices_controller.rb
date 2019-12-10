@@ -62,4 +62,3 @@ class Account::DevicesController < Account::AccountController
     collection.find(params[:id])
   end
 end
-

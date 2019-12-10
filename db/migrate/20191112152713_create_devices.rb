@@ -6,7 +6,7 @@ class CreateDevices < ActiveRecord::Migration[6.0]
       t.boolean :active, default: false
 
       t.timestamps
-      add_index :devices, :token
     end
+    add_index :devices, :token
   end
 end

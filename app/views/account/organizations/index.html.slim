@@ -1,7 +1,6 @@
 - breadcrumbs [\
   { home: true, \
     url: account_path },\
-    \
   { title: 'Organizations' }\
 ]
 
@@ -27,7 +26,7 @@
                 td
                   = link_to organization.name, account_organization_path(organization)
                 td
-                  = organization.created_at.strftime("%m/%d/%Y")
+                  = l(organization.created_at, format: :long)
                 td
                   = link_to "Edit", edit_account_organization_path(organization)
                 td

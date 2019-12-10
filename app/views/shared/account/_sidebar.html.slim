@@ -12,15 +12,16 @@
   .shadow-bottom
   .main-menu-content.d-flex.flex-column.justify-content-between
     ul#main-menu-navigation.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"
-      = sidebar_button({ text: 'Dashboard', path: '#', icon: 'desktop' })
+      = sidebar_button({ text: 'Dashboard', path: '#', icon: 'desktop', class: 'active'  })
       = sidebar_button({ text: 'Users', path: account_users_path, icon: 'users' })
       - if current_user.admin? || current_user.manager?
+          = sidebar_button({ text: 'My Organization', path: account_my_organization_path, icon: 'link' })
           = sidebar_button({ text: 'Device Groups', path: '#', icon: 'diagram' })
           = sidebar_button({ text: 'Devices', path: account_devices_path, icon: 'tablet' })
           = sidebar_button({ text: 'Channels', path: account_channels_path, icon: 'thumbnails-small' })
           = sidebar_button({ text: 'Content', path: account_contents_path, icon: 'box' })
       - elsif current_user.super_admin?
-          = sidebar_button({ text: 'Organizations', path: account_organizations_path, icon: 'link' })
+        = sidebar_button({ text: 'Organizations', path: account_organizations_path, icon: 'link' })
       = sidebar_button({ text: 'Analytics', path: '#', icon: 'pie-chart' })
       = sidebar_button({ text: 'Reports', path: '#', icon: 'morph-folder' })
     ul.navigation.navigation-main data-icon-style="lines" data-menu="menu-navigation"

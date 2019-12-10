@@ -1,0 +1,12 @@
+= simple_form_for [:account, device_group], remote: true do |f|
+    .form-group
+      = f.input :name, autofocus: true,
+        placeholder: 'Device Group name',
+        class: 'form-control'
+    .form-group
+      = f.input :description, as: :text,
+        placeholder: 'Device Group description',
+        class: 'form-control',
+        input_html: {rows: 5}
+    .form-group
+      = f.button :submit, "#{button_text}", class: "btn btn-primary mt-1 mr-sm-50"

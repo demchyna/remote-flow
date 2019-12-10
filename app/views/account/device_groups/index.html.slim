@@ -1,0 +1,23 @@
+- breadcrumbs [\
+  { home: true, url: account_path },\
+  { title: 'Device Groups' }\
+]
+- content_for :actions do
+  = link_to "Add New Device Groups", new_account_device_group_path, class: "btn btn-sm btn-light-primary", remote: true,
+      data: {toggle: "modal", target: "#modalForm"}
+
+.card
+  .card-header
+    h4.card-title Device Groups
+  .card-content
+    .card-body
+      = render 'account/device_groups/table', device_groups: @device_groups
+
+#modalForm.modal.fade.text-left aria-hidden="true" aria-labelledby="modalForm" role="dialog" tabindex="-1"
+  .modal-dialog.modal-dialog-centered.modal-dialog-scrollable role="document"
+    .modal-content
+      .modal-header
+        h4#myModalLabel33.modal-title
+        button.close aria-label="Close" data-dismiss="modal" type="button"
+          i.bx.bx-x
+      .modal-body

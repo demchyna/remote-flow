@@ -1,0 +1,6 @@
+|
+  $('table tbody').prepend('#{render('account/device_groups/element', device_group: @device_group)}');
+  $('#modalForm').modal('hide');
+  $('#device_group_#{@device_group.id}').addClass('bg-rgba-info').delay(1000).queue(function(){
+    $(this).removeClass('bg-rgba-info').dequeue();
+  });
